@@ -271,6 +271,7 @@ vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = tr
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 vim.keymap.set('n', '<leader>n', '<cmd>NERDTreeFocus<CR>', { noremap=true, silent=true })
 vim.keymap.set('n', '<leader>m', '<cmd>NERDTreeToggle<CR>', { noremap=true, silent=true })
+vim.keymap.set('n', '<leader>j', '<cmd>%!jq .<CR><cmd>w<CR>', { noremap=true, silent=true })
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
