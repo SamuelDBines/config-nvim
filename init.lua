@@ -43,6 +43,8 @@ P.S. You can delete this when you're done too. It's your config now :)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+
+-- vim.opt.guicursor = ' ';
 -- Install package manager
 --    https://github.com/folke/lazy.nvim
 --    `:help lazy.nvim.txt` for more info
@@ -72,6 +74,7 @@ require('lazy').setup({
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
   'github/copilot.vim',
+  'fatih/vim-go',
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
 
@@ -240,6 +243,8 @@ vim.o.clipboard = 'unnamedplus'
 -- Enable break indent
 vim.o.breakindent = true
 
+vim.o.tabstop=2
+vim.o.shiftwidth=2
 -- Save undo history
 vim.o.undofile = true
 
@@ -263,7 +268,9 @@ vim.o.termguicolors = true
 -- [[ Basic Keymaps ]]
 
 -- Keymaps for better default experience
--- See `:help vim.keymap.set()`
+-- See `:help vim.keymap.set()` 
+vim.keymap.set('v', 'J', ":m >+1<CR>gv=gv") 
+vim.keymap.set('v', 'K', ":m >-2<CR>gv=gv")
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
 -- Remap for dealing with word wrap
@@ -273,7 +280,7 @@ vim.keymap.set('n', '<leader>n', '<cmd>NERDTreeFocus<CR>', { noremap=true, silen
 vim.keymap.set('n', '<leader>m', '<cmd>NERDTreeToggle<CR>', { noremap=true, silent=true })
 vim.keymap.set('n', '<leader>j', '<cmd>%!jq .<CR><cmd>w<CR>', { noremap=true, silent=true })
 -- [[ Highlight on yank ]]
--- See `:help vim.highlight.on_yank()`
+-- See `:help vim.highlight.on_yank()`:
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
 vim.api.nvim_create_autocmd('TextYankPost', {
   callback = function()
